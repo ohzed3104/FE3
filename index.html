@@ -11,7 +11,15 @@
 </head>
 
 <body class="bg-gray-50">
-    <div id="app"></div>
+
+        <script>
+            // Nếu không có hash và path khác "/" thì chuyển về dạng hash routing
+            if (!window.location.hash && window.location.pathname !== "/") {
+                var newUrl = window.location.origin + "/#" + window.location.pathname + window.location.search;
+                window.location.replace(newUrl);
+            }
+        </script>
+        <div id="app"></div>
 
     <script src="./js/config.js"></script>
     <script src="./js/auth.js"></script>

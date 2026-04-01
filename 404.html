@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+</head>
+<body>
+  <script>
+    (function () {
+      var path = window.location.pathname || "/";
+      var search = window.location.search || "";
+      var hash = window.location.hash || "";
+
+      // Keep root as-is; only remap sub-paths to hash routes.
+      if (path === "/" || path === "/index.html") {
+        window.location.replace("/" + hash + search);
+        return;
+      }
+
+      var target = "/#" + path + search + hash;
+      window.location.replace(target);
+    })();
+  </script>
+</body>
+</html>

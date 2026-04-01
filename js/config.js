@@ -23,10 +23,6 @@ const PUBLIC_ROUTES = ["/login", "/register"];
 
 // Cấu hình endpoint
 const ENDPOINTS = {
-  AUTH: {
-    REGISTER: "/Auth/register",
-    LOGIN: "/Auth/login",
-  },
   USERS: {
     GET_ALL: "/users",
     GET_BY_ID: "/users/{id}",

@@ -1,7 +1,19 @@
+// Redirect to hash-based URL if needed
+(function () {
+  var path = window.location.pathname;
+  var hash = window.location.hash;
+  var search = window.location.search;
+
+  // Support opening sub-path directly on static hosting by switching to hash mode.
+  if (path !== "/" && path !== "/index.html" && !hash) {
+    window.location.replace(window.location.origin + "/#" + path + search);
+  }
+})();
+
 // Khởi tạo ứng dụng
 document.addEventListener("DOMContentLoaded", () => {
-  // Inject global styles
   injectGlobalStyles();
+
   // Đăng ký các route
   router.register("/login", renderLogin, false);
   router.register("/register", renderRegister, false);
@@ -11,6 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
   router.register("/user/:id/edit", renderEditUser, true);
   router.register("/admin/masking-config", renderAdminMaskingConfig, true);
   router.register("/", renderHome, true);
+
+  // Điều hướng lại route hiện tại sau khi đã đăng ký đầy đủ.
+  router.navigate();
 });
 
 // ==================== GLOBAL STYLES ====================
